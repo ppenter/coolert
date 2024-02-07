@@ -1,6 +1,6 @@
 {
   "name": "coolert-react",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "type": "module",
   "description": "A cool lightweight react alert and confirm library using Tailwind and Radix",
   "files": [
@@ -20,11 +20,12 @@
     }
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && yarn build-storybook",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "chromatic": "chromatic --exit-zero-on-changes",
+    "export": "yarn build && yarn publish"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.0.5",
