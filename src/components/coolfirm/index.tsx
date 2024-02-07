@@ -24,7 +24,7 @@ export interface IConfirmComponentProps extends IBaseAlertProps {
 
 export const ConfirmComponent = ({
   title = "Confirm",
-  description = "No description provided.",
+  description = "No description",
   type = "default",
   onConfirm,
   onCancel,
