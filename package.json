@@ -1,6 +1,6 @@
 {
   "name": "coolert-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "A cool lightweight react alert and confirm library using Tailwind and Radix",
   "files": [
@@ -10,12 +10,12 @@
     "type": "git",
     "url": "https://github.com/ppenter/coolert"
   },
-  "main": "dist/coolert-umd.cjs",
+  "main": "dist/coolert.umd.cjs",
   "module": "dist/coolert.js",
   "exports": {
     ".": {
       "import": "./dist/coolert.js",
-      "require": "./dist/coolert-umd.cjs"
+      "require": "./dist/coolert.umd.cjs"
     }
   },
   "scripts": {
