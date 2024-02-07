@@ -2359,7 +2359,7 @@
     process "^0.11.10"
     util "^0.12.4"
 
-"@storybook/builder-vite@7.6.13":
+"@storybook/builder-vite@7.6.13", "@storybook/builder-vite@^7.6.13":
   version "7.6.13"
   resolved "https://registry.yarnpkg.com/@storybook/builder-vite/-/builder-vite-7.6.13.tgz#bc75e8dd8a47a0901cc229da5b3992bdcfb50a63"
   integrity sha512-BpOUP1QPS7NeTTTs5i2gUmORtjigo2S6B57Pb08vDyy1/1bd+NpkLvHvdc/TxBBc57FI4TS/7m8NtwIYHtwkcQ==
@@ -2758,7 +2758,7 @@
     magic-string "^0.30.0"
     react-docgen "^7.0.0"
 
-"@storybook/react@7.6.13", "@storybook/react@^7.6.4":
+"@storybook/react@7.6.13", "@storybook/react@^7.6.13":
   version "7.6.13"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.6.13.tgz#0e146fe49651d9fbc16ffc7439040e00228996f8"
   integrity sha512-DjA2uyiUnDT6w0ibzsq++5z6V49bNURfuXUmPbqe6dAPvoKtMFgrT/7h+LN/0PnLe9MKhFXKpmHyUwjAQLS1QA==
