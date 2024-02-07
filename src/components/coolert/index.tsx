@@ -16,7 +16,7 @@ export interface IAlertComponentProps {
 
 export const AlertComponent = ({
   title = "Alert",
-  description = "No description provided.",
+  description = "No description.",
   type = "default",
 }: IAlertComponentProps) => {
   const handleClose = () => {
