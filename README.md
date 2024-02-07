@@ -5,7 +5,7 @@ A lightweight alert and confirm library for reactjs and nextjs using Tailwind an
 ## Getting Started
 
 ```bash
-yarn add coolert
+yarn add coolert-react
 ```
 
 ## Usage
