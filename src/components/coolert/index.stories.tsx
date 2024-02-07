@@ -21,6 +21,18 @@ const Example = (args: IAlertComponentProps) => {
       >
         {type}
       </Button>
+      <CopyBlock
+        text={`
+  coolert({
+    title: "Alert",
+    description: "This is an alert",
+    type: "default",
+  });
+
+`}
+        theme={dracula}
+        language="tsx"
+      />
     </div>
   );
 };

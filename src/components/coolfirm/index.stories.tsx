@@ -27,6 +27,21 @@ const Example = (args: IConfirmComponentProps) => {
       >
         {type}
       </Button>
+      <CopyBlock
+        text={`
+  coolfirm({
+    title: "Default Confirm",
+    description: "This is a default confirm",
+    type: "default",
+    onSubmit: (value) => {
+      console.log("Confirm: ", value);
+    }
+  });
+
+`}
+        theme={dracula}
+        language="tsx"
+      />
     </div>
   );
 };
