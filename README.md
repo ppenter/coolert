@@ -3,8 +3,8 @@
 A lightweight alert and confirm library for reactjs and nextjs using Shadcnui. Alert and confirm library for reactjs in single-line of code
 
 ## Preview
-![CPT2402080422-1111x639](https://github.com/ppenter/coolert/assets/55227490/1ea0f429-6233-4811-a3ee-6473a9f95595)
 
+![Preview](./doc/images/preview.gif)
 
 ## Getting Started
 

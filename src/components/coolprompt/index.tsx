@@ -4,8 +4,10 @@ import {
   ExclamationTriangleIcon,
   InfoCircledIcon,
 } from "@radix-ui/react-icons";
+import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 export type TAlertType = "info" | "warning" | "error" | "success" | "default";
 
@@ -15,19 +17,19 @@ export interface IBaseAlertProps {
   type?: TAlertType;
 }
 
-export interface IConfirmComponentProps extends IBaseAlertProps {
-  onConfirm?: (value: boolean) => any | Promise<void>;
-  onCancel?: (value: boolean) => void | Promise<void>;
+export interface IPropmtComponentProps extends IBaseAlertProps {
+  onConfirm?: (value: string) => any | Promise<void>;
+  onCancel?: (value: string) => any | Promise<void>;
 }
 
-export const ConfirmComponent = ({
-  title = "Confirm",
+export const PropmtComponent = ({
+  title = "Propmt",
   description = "No description",
   type = "default",
   onConfirm,
   onCancel,
-}: IConfirmComponentProps) => {
-  // const [value, setValue] = useState("");
+}: IPropmtComponentProps) => {
+  const [value, setValue] = useState("");
   const handleClose = () => {
     const alertComponent = document.getElementById("coolert-confirm");
     if (alertComponent === null) {
@@ -38,12 +40,12 @@ export const ConfirmComponent = ({
   };
 
   const handleCancel = async () => {
-    onCancel && (await onCancel(false));
+    onCancel && (await onCancel(value));
     handleClose();
   };
 
   const handleConfirm = async () => {
-    onConfirm && (await onConfirm(true));
+    onConfirm && (await onConfirm(value));
     handleClose();
   };
 
@@ -82,9 +84,9 @@ export const ConfirmComponent = ({
             </p>
           </div>
         )}
-        {/* <div>
+        <div>
           <Input value={value} onChange={(e) => setValue(e.target.value)} />
-        </div> */}
+        </div>
         <div className="flex w-full justify-end gap-2">
           <Button variant="secondary" onClick={handleCancel}>
             Cancel
@@ -96,24 +98,10 @@ export const ConfirmComponent = ({
   );
 };
 
-export const coolfirm = ({
-  title = "Alert",
-  description = "",
-  type = "default",
-  onConfirm,
-  onCancel,
-}: IConfirmComponentProps) => {
+export const coolprompt = (props: IPropmtComponentProps) => {
   // find alert component by id
   const alertContainer = document.getElementById("coolert-wrapper");
   if (!alertContainer) return;
   const root = createRoot(alertContainer);
-  root.render(
-    <ConfirmComponent
-      title={title}
-      description={description}
-      type={type}
-      onCancel={onCancel}
-      onConfirm={onConfirm}
-    />
-  );
+  root.render(<PropmtComponent {...props} />);
 };
