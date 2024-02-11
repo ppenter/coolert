@@ -14,9 +14,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  core: {
-    builder: "@storybook/builder-vite",
-  },
+  core: {},
   typescript: {
     check: false,
     skipCompiler: true,

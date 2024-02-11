@@ -1,21 +1,20 @@
+import { Button } from "@/components/ui/button";
 import type { Meta, StoryObj } from "@storybook/react";
 import { CopyBlock, dracula } from "react-code-blocks";
-import { Button } from "../ui/button";
 import { CoolertWrapper } from "../wrapper";
 import { IPropmtComponentProps, PropmtComponent, coolprompt } from "./index";
 
 const Example = (args: IPropmtComponentProps) => {
-  const { title, description, type } = args;
+  const { title, options } = args;
   return (
     <div className="h-[640px] flex flex-col gap-4 items-center justify-start">
       <CoolertWrapper />
       <Button
-        key={type}
+        key={options?.type}
         onClick={() => {
           coolprompt({
             title: title,
-            description: description,
-            type,
+            options,
             onConfirm: (value) => {
               console.log("Confirm: ", value);
             },
@@ -25,7 +24,7 @@ const Example = (args: IPropmtComponentProps) => {
           });
         }}
       >
-        {type}
+        {options?.type}
       </Button>
       <CopyBlock
         text={`
@@ -47,7 +46,7 @@ const Example = (args: IPropmtComponentProps) => {
 };
 
 const meta: Meta<typeof PropmtComponent> = {
-  title: "Components/coolprompt",
+  title: "Dialogs/coolprompt",
   component: Example,
   parameters: {
     layout: "left",
@@ -88,39 +87,20 @@ type Story = StoryObj<typeof meta>;
 export const PromptDefault: Story = {
   args: {
     title: "Default Propmt",
-    description: "This is a default prompt",
-    type: "default",
+    options: {
+      description: "This is a default prompt",
+      type: "default",
+    },
   },
 };
 
-export const PromptInfo: Story = {
+export const PromptPassword: Story = {
   args: {
-    title: "Info Propmt",
-    description: "This is an info prompt",
-    type: "info",
-  },
-};
-
-export const PromptWarning: Story = {
-  args: {
-    title: "Warning Propmt",
-    description: "This is a warning prompt",
-    type: "warning",
-  },
-};
-
-export const PromptError: Story = {
-  args: {
-    title: "Error Propmt",
-    description: "This is an error prompt",
-    type: "error",
-  },
-};
-
-export const PromptSuccess: Story = {
-  args: {
-    title: "Success Propmt",
-    description: "This is a success prompt",
-    type: "success",
+    title: "Password Propmt",
+    options: {
+      description: "This is an password prompt",
+      type: "info",
+      inputType: "password",
+    },
   },
 };

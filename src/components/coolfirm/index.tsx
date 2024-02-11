@@ -1,11 +1,23 @@
 /* eslint-disable no-unused-vars */
 import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { delay } from "@/utils";
+import {
   CheckCircledIcon,
   ExclamationTriangleIcon,
   InfoCircledIcon,
 } from "@radix-ui/react-icons";
+import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { Button } from "../ui/button";
+import { IAlertComponentProps } from "../coolert";
 
 export type TAlertType = "info" | "warning" | "error" | "success" | "default";
 
@@ -15,26 +27,28 @@ export interface IBaseAlertProps {
   type?: TAlertType;
 }
 
-export interface IConfirmComponentProps extends IBaseAlertProps {
+export interface IConfirmComponentProps extends IAlertComponentProps {
   onConfirm?: (value: boolean) => any | Promise<void>;
   onCancel?: (value: boolean) => void | Promise<void>;
 }
 
 export const ConfirmComponent = ({
   title = "Confirm",
-  description = "No description",
-  type = "default",
+  options,
   onConfirm,
   onCancel,
 }: IConfirmComponentProps) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const { description = "No description provided.", type = "default" } =
+    options || {};
   // const [value, setValue] = useState("");
-  const handleClose = () => {
+  const handleClose = async () => {
     const alertComponent = document.getElementById("coolert-confirm");
-    if (alertComponent === null) {
-      return;
-    }
+
+    setIsOpen(false);
+    await delay(100);
     // delete alert component
-    alertComponent.remove();
+    alertComponent?.remove();
   };
 
   const handleCancel = async () => {
@@ -48,13 +62,10 @@ export const ConfirmComponent = ({
   };
 
   return (
-    <div
-      id="coolert-confirm"
-      className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
-    >
-      <div className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg">
-        <div className="flex justify-between items-center gap-16">
-          <div className="text-xl font-bold flex gap-2 items-center">
+    <AlertDialog open={isOpen}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle className="flex gap-2 items-center">
             {
               {
                 info: <InfoCircledIcon className="w-8 h-8" />,
@@ -70,36 +81,22 @@ export const ConfirmComponent = ({
                 default: null,
               }[type]
             }
-            <h1 className="text-xl font-bold" id="coolert-alert-title">
-              {title}
-            </h1>
-          </div>
-        </div>
-        {description && (
-          <div>
-            <p className="text-sm text-gray-500" id="coolert-alert-description">
-              {description}
-            </p>
-          </div>
-        )}
-        {/* <div>
-          <Input value={value} onChange={(e) => setValue(e.target.value)} />
-        </div> */}
-        <div className="flex w-full justify-end gap-2">
-          <Button variant="secondary" onClick={handleCancel}>
-            Cancel
-          </Button>
+            {title}
+          </AlertDialogTitle>
+          <AlertDialogDescription>{description}</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel onClick={handleCancel}>Cancle</AlertDialogCancel>
           <Button onClick={handleConfirm}>Confirm</Button>
-        </div>
-      </div>
-    </div>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 };
 
 export const coolfirm = ({
   title = "Alert",
-  description = "",
-  type = "default",
+  options,
   onConfirm,
   onCancel,
 }: IConfirmComponentProps) => {
@@ -110,8 +107,7 @@ export const coolfirm = ({
   root.render(
     <ConfirmComponent
       title={title}
-      description={description}
-      type={type}
+      options={options}
       onCancel={onCancel}
       onConfirm={onConfirm}
     />

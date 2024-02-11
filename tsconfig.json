@@ -7,9 +7,10 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "utils/*": ["src/utils/*"]
     },
-    "declaration": true,
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -24,6 +25,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  "declaration": true,
+  "declarationDir": "types",
   "include": ["src", "storybook-static"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
