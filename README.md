@@ -9,7 +9,7 @@ A lightweight alert and confirm library for reactjs and nextjs using Shadcnui. A
 ## Getting Started
 
 ```bash
-yarn add coolert-react
+yarn add coolert
 ```
 
 ## Usage
